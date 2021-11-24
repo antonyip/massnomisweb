@@ -5,34 +5,22 @@ import pandas as pd
 import json
 
 def app():
+    st.empty()
+    page = st.container()
 
-    #st.set_page_config(layout="wide")
-   
-    st.title("Fees and Average Deposit and Withdrawel Sizes. ")
-    st.title("HINT: USE LOG SCALE BY CLICKING THE THING ON THE LEFT")
+    page.title("Fees and Average Deposit and Withdrawel Sizes. ")
 
     query_id = "207f12b8-1ff4-45d1-ade6-4669914ff410"
     df = pd.read_json(f"https://api.flipsidecrypto.com/api/v2/queries/{query_id}/data/latest",
     convert_dates=["TIMESTAMP_NTZ"],
-)
-
-
-    t_f = False
-    st.sidebar.write("Choose y-axis scale")
-    check = st.sidebar.checkbox("Linear/Log")
-    if check: 
-        t_f = True
-    
+    )  
 
 #-------------------------------------------------------
     
-    st.markdown("""
+    page.markdown("""
     ### AAVE 29 SER
     """)
 
-
-
-
     df = px.line(
         df, #this is the dataframe you are trying to plot
         x = "DAYZD",
@@ -43,11 +31,11 @@ def app():
         template = "plotly_white",
         width = 1000,
         height = 600,
-        log_y = t_f
+        log_y = False
     )
     
 
-    st.plotly_chart(df)
+    page.plotly_chart(df)
     query_id = "207f12b8-1ff4-45d1-ade6-4669914ff410"
     df = pd.read_json(f"https://api.flipsidecrypto.com/api/v2/queries/{query_id}/data/latest",
     convert_dates=["TIMESTAMP_NTZ"],
@@ -62,11 +50,11 @@ def app():
         template = "plotly_white",
         width = 1000,
         height = 600,
-        log_y = t_f
+        log_y = False
     )
     
 
-    st.plotly_chart(df)
+    page.plotly_chart(df)
 
 
     query_id = "207f12b8-1ff4-45d1-ade6-4669914ff410"
@@ -83,9 +71,9 @@ def app():
         template = "plotly_white",
         width = 1000,
         height = 600,
-        log_y = t_f
+        log_y = False
     )
-    st.plotly_chart(df)
+    page.plotly_chart(df)
     query_id = "207f12b8-1ff4-45d1-ade6-4669914ff410"
     df = pd.read_json(f"https://api.flipsidecrypto.com/api/v2/queries/{query_id}/data/latest",
     convert_dates=["TIMESTAMP_NTZ"],
@@ -100,9 +88,9 @@ def app():
         template = "plotly_white",
         width = 1000,
         height = 600,
-        log_y = t_f
+        log_y = False
     )
-    st.plotly_chart(df)
+    page.plotly_chart(df)
 
     query_id = "207f12b8-1ff4-45d1-ade6-4669914ff410"
     df = pd.read_json(f"https://api.flipsidecrypto.com/api/v2/queries/{query_id}/data/latest",
@@ -118,9 +106,9 @@ def app():
         template = "plotly_white",
         width = 1000,
         height = 600,
-        log_y = t_f
+        log_y = False
     )
-    st.plotly_chart(df)
+    page.plotly_chart(df)
     query_id = "207f12b8-1ff4-45d1-ade6-4669914ff410"
     df = pd.read_json(f"https://api.flipsidecrypto.com/api/v2/queries/{query_id}/data/latest",
     convert_dates=["TIMESTAMP_NTZ"],
@@ -135,9 +123,9 @@ def app():
         template = "plotly_white",
         width = 1000,
         height = 600,
-        log_y = t_f
+        log_y = False
     )
-    st.plotly_chart(df)
+    page.plotly_chart(df)
 
 
 

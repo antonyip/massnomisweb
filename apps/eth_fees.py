@@ -6,30 +6,26 @@ import json
 
 def app():
 
-    #st.set_page_config(layout="wide")
-    st.title("Eth Fees")
-    st.text ("https://app.flipsidecrypto.com/velocity/queries/11edbedf-d84e-493d-b605-827298e317e2")
+    page = st.container()
+    page.title("Eth Fees")
+    page.text ("https://app.flipsidecrypto.com/velocity/queries/11edbedf-d84e-493d-b605-827298e317e2")
 
 
 
     eth_fees_flipside_df = pd.read_json('https://api.flipsidecrypto.com/api/v2/queries/11edbedf-d84e-493d-b605-827298e317e2/data/latest')
 
     t_f = False
-    st.sidebar.write("Choose y-axis scale")
-    check = st.sidebar.checkbox("Linear/Log")
-    if check: 
-        t_f = True
     
 
 #-------------------------------------------------------
     
-    st.markdown("""
+    page.markdown("""
     ### Ethereum Fees and Transactions - Base Table
     """)
 
-    st.dataframe(eth_fees_flipside_df)
+    page.dataframe(eth_fees_flipside_df)
 
-    st.markdown("""
+    page.markdown("""
     """)
     
 
@@ -47,7 +43,7 @@ def app():
         height = 600,
         log_y = t_f
     )
-    st.plotly_chart(eth_fees_graph)
+    page.plotly_chart(eth_fees_graph)
 
     
 
@@ -63,7 +59,7 @@ def app():
         height = 600,
         log_y = t_f
     )
-    st.plotly_chart(eth_fees_graph)
+    page.plotly_chart(eth_fees_graph)
 
 
     eth_fees_flipside_df = pd.read_json('https://api.flipsidecrypto.com/api/v2/queries/11edbedf-d84e-493d-b605-827298e317e2/data/latest')
@@ -78,7 +74,7 @@ def app():
         height = 600,
         log_y = t_f
     )
-    st.plotly_chart(eth_fees_graph)
+    page.plotly_chart(eth_fees_graph)
 
 
     eth_fees_flipside_df = pd.read_json('https://api.flipsidecrypto.com/api/v2/queries/11edbedf-d84e-493d-b605-827298e317e2/data/latest')
@@ -93,7 +89,7 @@ def app():
         height = 600,
         log_y = t_f
     )
-    st.plotly_chart(eth_fees_graph)
+    page.plotly_chart(eth_fees_graph)
     # ------------------------------------------------
 
 #   eth_day
